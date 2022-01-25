@@ -1,7 +1,7 @@
 
 /*
- * Name: 
- * Matrikelnummer: 
+ * Name: Alexander Müller
+ * Matrikelnummer: 1259131
  */
 
 #include <stdio.h>
@@ -13,12 +13,22 @@
 void java2html(const char *jstring, char *htmlstring);
 
 void java2html(const char *jstring, char *htmlstring) {
-    /* Ihre Loesung */
-    
-    
-    
-}
+    int i = 0;
+    int j = 0;
 
+    while (jstring[i] != '\0') {
+        if (isupper(jstring[i])) {
+            htmlstring[j] = '-';
+            j = j + 1;
+            htmlstring[j] = tolower(jstring[i]);
+        } else {
+            htmlstring[j] = jstring[i];
+        }
+        i = i + 1;
+        j = j + 1;
+    }
+    htmlstring[j] = '\0';
+}
 
 int main(int argc, char *argv[]) {
     enum { BUFSIZE = 100 };
