@@ -16,16 +16,19 @@ void schreibbit(unsigned z) {
 
 /*reads integer from keyboard input in a binary form*/
 unsigned liesbit(void) {
-    char c;
-    unsigned i = 0;
-    while(scanf("%c", &c) != EOF) {
-        if (c == '0') {
-            i = (i << 1);
-        } else if (c == '1') {
-            i = (i << 1) | 1;
+    unsigned i = 0, num = 0;
+    char string[17];
+    scanf("%s", string);
+
+    while(string[i] != '\0') {
+        if (string[i] == '0') {
+            num = (num << 1);
+        } else if (string[i] == '1') {
+            num = (num << 1) | 1;
         }
+        i++;
     }
-    return i;
+    return num;
 }
 
 int main(void) {
