@@ -1,1 +1,8 @@
+# Ignore all files without extension
+*
+!*.*
+
+core.*
 .DS_Store
+.vscode
+*.log

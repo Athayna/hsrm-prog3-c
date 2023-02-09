@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
     } else if (!strcmp(argv[1], "decrypt")) {
         while(scanf("%c", &c) != EOF) {
             if(c >= 'a' && c <= 'z') {
+                /*bug caused by letters not being at expected index*/
                 printf("%c", (c - move[c - 'a']));
             } else {
                 printf("%c", c);
