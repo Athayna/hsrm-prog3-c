@@ -71,7 +71,7 @@ void entprelle(const char *ein, char *aus) {
         while (ein[j] == ein[i]) {
             j++;
         }
-        sprintf(aus, "%c", c);
+        *aus = c;
         aus++;
         i = j - 1;
     }

@@ -5,8 +5,8 @@
 typedef struct lst {
     char name[20];
     int alter;
-    struct lst *next;}
-    ListEle;
+    struct lst *next;
+    } ListEle;
 
 ListEle *einfuegen(ListEle *lst, const char *n, int a) {
     ListEle *new = malloc(sizeof(struct lst));
@@ -42,6 +42,18 @@ int dopple(ListEle *lst, const char *n, int a) {
     return 0;
 }
 
+void printList(ListEle *lst) {
+    if (lst == NULL) {
+        printf("List empty.");
+    } else {
+        while (lst != NULL) {
+            printf("[%s,%d]->", lst->name, lst->alter);
+            lst = lst->next;
+        }
+        printf("NULL\n");
+    }
+}
+
 void befreie(ListEle *lst) {
     ListEle *next;
     if(lst != NULL) {
@@ -55,21 +67,24 @@ void befreie(ListEle *lst) {
 }
 
 int main(void) {
+    ListEle *lst = NULL;
     char n[24];
     int a;
-    ListEle *lst = NULL;
 
     while(scanf("%s", n) != EOF) {
         sscanf((strchr(n, ',') + 1), "%d", &a);
-        /* *strchr(n, ',') + 1 = '\0'; */
+        *strchr(n, ',') = '\0';
         lst = einfuegen(lst, n, a);
+        printList(lst);
     }
 
-    if(dopple(lst, "Joghurta,21", 21) == 1) {
+    if(dopple(lst, "Joghurta", 21) == 1) {
         printf("Verdopplung gelungen.\n");
     } else {
         printf("Verdopplung gescheitert\n");
     }
+
+    printList(lst);
 
     befreie(lst);
 
